@@ -20,6 +20,7 @@ public class GameBehavior : MonoBehaviour
             {
                 labelText = "You've found all the items!";
                 showWinScreen = true;
+                Time.timeScale = 0;
             }
             else
             {
