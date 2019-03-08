@@ -2,13 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using CustomExtensions;
 
-public class GameBehavior : MonoBehaviour 
+public class GameBehavior : MonoBehaviour, IManager
 {
     public string labelText = "Collect all 4 items and win your freedom!";
-    public int maxItems = 4;
+    public readonly int maxItems = 4;
     public bool showWinScreen = false;
     public bool showLossScreen = false;
+
+    public delegate void DebugDelegate(string newText);
+    public DebugDelegate debug = Print;
+
+    private string _state;
+    public string State 
+    {
+        get { return _state; }
+        set { _state = value; }
+    }
 
     private int _itemsCollected = 0;
     public int Items
@@ -50,10 +61,43 @@ public class GameBehavior : MonoBehaviour
         }
     }
 
-    void RestartLevel()
+    void Start()
     {
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1.0f;
+        Initialize();
+
+        InventoryList<string> inventoryList = new InventoryList<string>();
+        inventoryList.SetItem("Potion");
+        Debug.Log(inventoryList.item);
+    }
+
+    public void Initialize() 
+    {
+        _state = "Manager initialized..";
+        _state.FancyDebug();
+
+        debug(_state);
+        LogWithDelegate(debug);
+
+        PlayerBehavior playerBehavior = GameObject.Find("Player").GetComponent<PlayerBehavior>();
+        playerBehavior.playerJump += HandlePlayerJump;
+    }
+
+    public void HandlePlayerJump(bool isGrounded)
+    {
+        if(isGrounded)
+        {
+            debug("Player has jumped...");
+        }
+    }
+
+    public static void Print(string newText)
+    {
+        Debug.Log(newText);
+    }
+
+    public void LogWithDelegate(DebugDelegate debug)
+    {
+        debug("Delegating the debug task...");
     }
 
 	void OnGUI()
@@ -66,7 +110,7 @@ public class GameBehavior : MonoBehaviour
         {
             if (GUI.Button(new Rect(Screen.width/2 - 100, Screen.height/2 - 50, 200, 100), "YOU WON!"))
             {
-                RestartLevel();
+                Utilities.RestartLevel();
             }
         }
 
@@ -74,7 +118,15 @@ public class GameBehavior : MonoBehaviour
         {
             if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 50, 200, 100), "You lose..."))
             {
-                RestartLevel();
+                try
+                {
+                    Utilities.RestartLevel(-1);
+                    debug("Level restarted successfully...");
+                }
+                catch (System.ArgumentException e)
+                {
+                    debug("Restart failed: " + e.ToString());
+                }
             }
         }
 	}
