@@ -125,7 +125,13 @@ public class GameBehavior : MonoBehaviour, IManager
                 }
                 catch (System.ArgumentException e)
                 {
-                    debug("Restart failed: " + e.ToString());
+                    Utilities.RestartLevel(0);
+                    debug("Reverting to scene 0: " + e.ToString());
+                }
+                finally
+                {
+                    Utilities.RestartLevel(0);
+                    debug("Restart handled...");
                 }
             }
         }
