@@ -20,9 +20,10 @@ public class LearningCurve : MonoBehaviour
 
         AddNumbers();
 
+        Debug.Log($"A string can have variables like {firstName} inserted directly!");
         // Debug.Log(firstName + allGood);
 
-        int characterLevel = 32;
+        int characterLevel = 3;
         int nextSkillLevel = GenerateCharacter("Spike", characterLevel);
         Debug.LogFormat("Next skill at level {0}", nextSkillLevel);
     }

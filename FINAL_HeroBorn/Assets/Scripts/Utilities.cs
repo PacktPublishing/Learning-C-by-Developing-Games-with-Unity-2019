@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public static class Utilities 
+public static class Utilities
 {
     public static int playerDeaths = 0;
 
@@ -23,12 +23,10 @@ public static class Utilities
         Debug.Log("Player deaths: " + playerDeaths);
     }
 
-    public static bool RestartLevel(int sceneIndex) 
+    public static bool RestartLevel(int sceneIndex)
     {
-        // 1
         if(sceneIndex < 0)
         {
-            // 2
             throw new System.ArgumentException("Scene index cannot be negative");
         }
 

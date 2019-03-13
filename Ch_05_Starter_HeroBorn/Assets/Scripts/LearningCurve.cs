@@ -36,47 +36,10 @@ public class LearningCurve : MonoBehaviour
         int nextSkillLevel = GenerateCharacter("Spike", characterLevel);
         Debug.LogFormat("Next skill at level {0}", nextSkillLevel);
 
-        if (currentGold > 50)
-        {
-            Debug.Log("You're rolling in it - beware of pickpockets.");
-        }
-        else if (currentGold < 15)
-        {
-            Debug.Log("Not much there to steal.");
-        }
-        else
-        {
-            Debug.Log("Looks like your purse is in the sweet spot.");
-        }
-
+        PocketChange();
         OpenTreasureChamber();
+        SwitchingAround();
 
-        switch (characterAction)
-        {
-            case "Heal":
-                Debug.Log("Potion sent.");
-                break;
-            case "Attack":
-                Debug.Log("To arms!");
-                break;
-            default:
-                Debug.Log("Shields up.");
-                break;
-        }
-
-        switch (diceRoll)
-        {
-            case 7:
-            case 15:
-                Debug.Log("Mediocre damage, not bad.");
-                break;
-            case 20:
-                Debug.Log("Critical hit, the creature goes down!");
-                break;
-            default:
-                Debug.Log("You completely missed and fell on your face.");
-                break;
-        }
 
         List<string> questPartyMembers = new List<string>() { "Grim the Barbarian", "Merlin the Wise", "Sterling the Knight" };
         questPartyMembers.Add("Craven the Necromancer");
@@ -116,7 +79,7 @@ public class LearningCurve : MonoBehaviour
             {
                 Debug.Log("Glad you're here Merlin!");
             }
-        } 
+        }
 
         foreach (string partyMember in questPartyMembers)
         {
@@ -157,6 +120,22 @@ public class LearningCurve : MonoBehaviour
         return level + 5;
     }
 
+    public void PocketChange()
+    {
+        if (currentGold > 50)
+        {
+            Debug.Log("You're rolling in it - beware of pickpockets.");
+        }
+        else if (currentGold < 15)
+        {
+            Debug.Log("Not much there to steal.");
+        }
+        else
+        {
+            Debug.Log("Looks like your purse is in the sweet spot.");
+      }
+    }
+
     public void OpenTreasureChamber()
     {
         if(pureOfHeart && rareItem == "Relic Stone")
@@ -165,7 +144,7 @@ public class LearningCurve : MonoBehaviour
             {
                 Debug.Log("You have the spirit, but not the knowledge.");
             }
-            else 
+            else
             {
                 Debug.Log("The treasure is yours, worthy hero!");
             }
@@ -173,6 +152,36 @@ public class LearningCurve : MonoBehaviour
         else
         {
             Debug.Log("Come back when you have what it takes.");
+        }
+    }
+
+    public void SwitchingAround()
+    {
+        switch (characterAction)
+        {
+            case "Heal":
+                Debug.Log("Potion sent.");
+                break;
+            case "Attack":
+                Debug.Log("To arms!");
+                break;
+            default:
+                Debug.Log("Shields up.");
+                break;
+        }
+
+        switch (diceRoll)
+        {
+            case 7:
+            case 15:
+                Debug.Log("Mediocre damage, not bad.");
+                break;
+            case 20:
+                Debug.Log("Critical hit, the creature goes down!");
+                break;
+            default:
+                Debug.Log("You completely missed and fell on your face.");
+                break;
         }
     }
 }
