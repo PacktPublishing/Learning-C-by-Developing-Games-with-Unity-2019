@@ -52,9 +52,11 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 * Linux Device Drivers Development [[Packt]](https://www.packtpub.com/networking-and-servers/linux-device-drivers-development?utm_source=github&utm_medium=repository&utm_campaign=9781785280009) [[Amazon]](https://www.amazon.com/dp/1788293770)
 
-## Get to Know the Author(s)
-**Author Name**
-Bio
+## Get to Know the Author
+**Harrison Ferrone**
+was born in Chicago, IL, and raised all over. Most days, you can find him creating instructional content for LinkedIn Learning and Pluralsight, or tech editing for the Ray Wenderlich website.
+He holds various fancy looking pieces of paper from the University of Colorado at Boulder and Columbia College Chicago. Despite being a proud alumnus, most of these are stored in a basement somewhere. 
+After a few years as an iOS developer at small start-ups, and one Fortune 500 company, he fell into a teaching career and never looked back. Throughout all this, he's bought many books, acquired a few cats, worked abroad, and continually wondered why Neuromancer isn't on more course syllabi.
 
 
 ### Suggestions and Feedback
