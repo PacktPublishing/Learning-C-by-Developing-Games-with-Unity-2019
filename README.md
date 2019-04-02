@@ -1,6 +1,6 @@
 # Learning C# by Developing Games with Unity 2019
 
-<a href="Packt UTM URL of the Book"><img src="Cover Image URL of the Book" alt="Book Name" height="256px" align="right"></a>
+<a href="https://prod.packtpub.com/in/game-development/learning-c-developing-games-unity-2019-fourth-edition?utm_source=github&utm_medium=repository&utm_campaign=9781789532050"><img src="https://prod.packtpub.com/media/catalog/product/cache/a22c7d190d97ca25f5f1089471ab8502/b/1/b11549_mockupcover.png" alt="Book Name" height="256px" align="right"></a>
 
 This is the code repository for [Book Name](Packt UTM URL of the Book), published by Packt.
 
